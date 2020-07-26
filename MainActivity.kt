@@ -1,7 +1,3 @@
-// Memory Game
-// Zulfikar Muhammad
-
-
 package com.example.memorygame
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -24,40 +20,40 @@ class MainActivity : AppCompatActivity() {
         val buttons = arrayOf(button1, button2, button3, button4, button5, button6, button7, button8,
             button9, button10, button11, button12)
 
-        val cardBack = 7
-        var clicked = 0
-        var turnOver = false
-        var lastClicked = -1
+        val cardBalik = 7
+        var klik = 0
+        var puterBalik = false
+        var lastKlik = -1
 
         images.shuffle()
         for(i in 0..11){
-            buttons[i].setBackgroundResource(cardBack)
-            buttons[i].text = "cardBack"
+            buttons[i].setBackgroundResource(cardBalik)
+            buttons[i].text = "cardBalik"
             buttons[i].textSize = 0.0F
             buttons[i].setOnClickListener {
-                if (buttons[i].text == "cardBack" && !turnOver) {
+                if (buttons[i].text == "cardBalik" && !puterBalik) {
                     buttons[i].setBackgroundResource(images[i])
                     buttons[i].setText(images[i])
-                    if (clicked == 0) {
-                        lastClicked = i
+                    if (klik == 0) {
+                        lastKlik = i
                     }
-                    clicked++
-                } else if (buttons[i].text !in "cardBack") {
-                    buttons[i].setBackgroundResource(cardBack)
-                    buttons[i].text = "cardBack"
-                    clicked--
+                    klik++
+                } else if (buttons[i].text !in "cardBalik") {
+                    buttons[i].setBackgroundResource(cardBalik)
+                    buttons[i].text = "cardBalik"
+                    klik--
                 }
 
-                if (clicked == 2) {
-                    turnOver = true
-                    if (buttons[i].text == buttons[lastClicked].text) {
+                if (klik == 2) {
+                    puterBalik = true
+                    if (buttons[i].text == buttons[lastKlik].text) {
                         buttons[i].isClickable = false
-                        buttons[lastClicked].isClickable = false
-                        turnOver = false
-                        clicked = 0
+                        buttons[lastKlik].isClickable = false
+                        puterBalik = false
+                        klik = 0
                     }
-                } else if (clicked == 0) {
-                    turnOver = false
+                } else if (klik == 0) {
+                    puterBalik = false
                 }
             }
         }
